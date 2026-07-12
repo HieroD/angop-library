@@ -12,6 +12,10 @@ class Author extends Model
     /** @use HasFactory<AuthorFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+    ];
+
     public function books(): BelongsToMany
     {
         return $this->belongsToMany(Book::class)

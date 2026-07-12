@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('publisher', 255)->nullable();
             $table->year('published_year');
             $table->integer('total_copies')->default(1);
+            $table->string('book_cover')->nullable();
             $table->string('isbn', 13)->nullable()->unique();
             $table->text('description')->nullable();
             $table->timestamps();

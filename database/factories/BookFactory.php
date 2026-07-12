@@ -17,6 +17,7 @@ class BookFactory extends Factory
             'publisher' => fake()->company(),
             'published_year' => fake()->year(),
             'total_copies' => fake()->numberBetween(1, 10),
+            'book_cover' => null,
             'isbn' => fake()->unique()->isbn13(),
             'description' => fake()->paragraph(),
         ];
