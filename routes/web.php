@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,3 +13,7 @@ Route::get('/login', function () {
 });
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+Route::middleware('auth:staff')->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
+});
