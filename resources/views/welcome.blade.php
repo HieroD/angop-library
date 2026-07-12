@@ -14,6 +14,7 @@
             <p class="text-base-content/70">
                 This site is currently being built. Check back soon!
             </p>
+            <a href="{{ url('/login') }}" class="btn btn-primary">Login</a>
         </div>
     </body>
 </html>
