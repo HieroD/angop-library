@@ -11,6 +11,10 @@ class AuthController extends Controller
     public function login(LoginRequest $request, Login $login): RedirectResponse
     {
         if ($login->handle($request)) {
+            if (auth('staff')->check()) {
+                return redirect()->intended(route('admin.dashboard'));
+            }
+
             return redirect()->intended('/');
         }
 
