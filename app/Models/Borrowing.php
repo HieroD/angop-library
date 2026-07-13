@@ -13,6 +13,16 @@ class Borrowing extends Model
     /** @use HasFactory<BorrowingFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'book_id',
+        'member_id',
+        'staff_id',
+        'borrow_date',
+        'due_date',
+        'returned_at',
+        'status',
+    ];
+
     protected function casts(): array
     {
         return [

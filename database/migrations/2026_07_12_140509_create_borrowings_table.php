@@ -25,7 +25,7 @@ return new class extends Migration
             $table->timestamp('borrow_date')->useCurrent();
             $table->date('due_date');
             $table->timestamp('returned_at')->nullable();
-            $table->enum('status', ['menunggu konfirmasi', 'dipinjam', 'dikembalikan', 'terlambat'])->default('menunggu konfirmasi');
+            $table->enum('status', ['menunggu konfirmasi', 'dipinjam', 'ditolak', 'dikembalikan', 'terlambat'])->default('menunggu konfirmasi');
             $table->timestamps();
 
             $table->index('status');
