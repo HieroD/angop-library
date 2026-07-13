@@ -8,7 +8,9 @@ use App\Actions\Books\UpdateBook;
 use App\Http\Requests\Books\DestroyBookRequest;
 use App\Http\Requests\Books\StoreBookRequest;
 use App\Http\Requests\Books\UpdateBookRequest;
+use App\Models\Author;
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -21,7 +23,11 @@ class BookController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('admin.books.index', compact('books'));
+        $authors = Author::query()->orderBy('name')->get(['id', 'name']);
+
+        $categories = Category::query()->orderBy('name')->get(['id', 'name']);
+
+        return view('admin.books.index', compact('books', 'authors', 'categories'));
     }
 
     public function store(StoreBookRequest $request, StoreBook $storeBook): RedirectResponse

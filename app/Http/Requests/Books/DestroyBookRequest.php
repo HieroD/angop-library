@@ -31,6 +31,8 @@ class DestroyBookRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'title_confirmation.required' => 'Konfirmasi judul buku wajib diisi.',
+            'title_confirmation.string' => 'Konfirmasi judul buku harus berupa teks.',
             'title_confirmation.in' => 'Judul buku yang diketik tidak sesuai.',
         ];
     }

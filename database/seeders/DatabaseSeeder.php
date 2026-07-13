@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin',
             'password' => 'adminadmin',
         ]);
+
+        $this->call(BookSeeder::class);
     }
 }
