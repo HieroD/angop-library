@@ -44,9 +44,8 @@
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <div class="space-y-6 lg:col-span-2">
             <section class="overflow-hidden rounded-lg border border-[#e1e3e4] bg-white shadow-sm">
-                <div class="flex items-center justify-between border-b border-[#e1e3e4] px-5 py-4">
+                <div class="border-b border-[#e1e3e4] px-5 py-4">
                     <h3 class="text-lg font-semibold text-[#191c1d]">Peminjaman Aktif</h3>
-                    <a href="#" class="text-sm font-semibold text-[#00685f] hover:underline">Lihat Semua</a>
                 </div>
 
                 <div class="overflow-x-auto">
@@ -111,9 +110,8 @@
             </section>
 
             <section class="overflow-hidden rounded-lg border border-[#e1e3e4] bg-white shadow-sm">
-                <div class="flex items-center justify-between border-b border-[#e1e3e4] px-5 py-4">
+                <div class="border-b border-[#e1e3e4] px-5 py-4">
                     <h3 class="text-lg font-semibold text-[#191c1d]">Riwayat Peminjaman</h3>
-                    <a href="#" class="text-sm font-semibold text-[#00685f] hover:underline">Lihat Semua</a>
                 </div>
 
                 <div class="overflow-x-auto">

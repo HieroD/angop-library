@@ -40,4 +40,9 @@ Route::middleware('auth:member')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'member'])->name('member.dashboard');
     Route::get('/buku', [CatalogController::class, 'index'])->name('member.catalog.index');
     Route::get('/buku/{book}', [CatalogController::class, 'show'])->name('member.catalog.show');
+    Route::post('/buku/{book}/pinjam', [CatalogController::class, 'borrow'])->name('member.catalog.borrow');
+    Route::view('/aturan-peminjaman', 'member.borrowings.rules', [
+        'title' => 'Aturan Peminjaman',
+        'active' => 'borrowings',
+    ])->name('member.borrowings.rules');
 });

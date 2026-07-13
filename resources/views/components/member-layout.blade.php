@@ -27,7 +27,7 @@
                         'border-[#00685f] text-[#00685f]' => $active === 'dashboard',
                         'border-transparent text-[#3d4947] hover:border-[#00685f] hover:text-[#00685f]' => $active !== 'dashboard',
                     ])>
-                        <span class="text-sm uppercase tracking-wider">Beranda</span>
+                        <span class="text-sm uppercase tracking-wider">Dashboard</span>
                     </a>
                     <a href="{{ route('member.catalog.index') }}" @class([
                         'flex h-full items-end border-b-2 pb-4 font-semibold transition-colors',
@@ -36,12 +36,12 @@
                     ])>
                         <span class="text-sm uppercase tracking-wider">Katalog Buku</span>
                     </a>
-                    <a href="#" @class([
+                    <a href="{{ route('member.borrowings.rules') }}" @class([
                         'flex h-full items-end border-b-2 pb-4 font-semibold transition-colors',
                         'border-[#00685f] text-[#00685f]' => $active === 'borrowings',
                         'border-transparent text-[#3d4947] hover:border-[#00685f] hover:text-[#00685f]' => $active !== 'borrowings',
                     ])>
-                        <span class="text-sm uppercase tracking-wider">Peminjaman Saya</span>
+                        <span class="text-sm uppercase tracking-wider">Aturan Peminjaman</span>
                     </a>
                 </nav>
 
@@ -50,7 +50,6 @@
                     <form class="hidden md:block" method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button class="flex cursor-pointer items-center gap-2 rounded-lg bg-[#ba1a1a] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#93000a]" type="submit">
-                            <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
                             Keluar
                         </button>
                     </form>
@@ -92,13 +91,13 @@
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $active === 'catalog' ? 1 : 0 }}">menu_book</span>
                     Katalog Buku
                 </a>
-                <a href="#" @class([
+                <a href="{{ route('member.borrowings.rules') }}" @class([
                     'flex items-center gap-3 rounded-lg px-4 py-3 font-medium transition',
                     'bg-[#00685f] text-white' => $active === 'borrowings',
                     'text-[#3d4947] hover:bg-[#e1e3e4]' => $active !== 'borrowings',
                 ])>
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $active === 'borrowings' ? 1 : 0 }}">assignment</span>
-                    Peminjaman Saya
+                    Aturan Peminjaman
                 </a>
             </nav>
 
@@ -110,7 +109,6 @@
             <form class="mt-4" method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left font-medium text-[#ba1a1a] transition-colors hover:bg-[#ffdad6]" type="submit">
-                    <span class="material-symbols-outlined">logout</span>
                     Keluar
                 </button>
             </form>
