@@ -34,3 +34,7 @@ Route::middleware('auth:staff')->group(function () {
     Route::post('/admin/returns/{borrowing}', [ReturnController::class, 'store'])->name('admin.returns.store');
     Route::patch('/admin/returns/{returnRecord}/payment', [ReturnController::class, 'updatePayment'])->name('admin.returns.payment.update');
 });
+
+Route::middleware('auth:member')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'member'])->name('member.dashboard');
+});
