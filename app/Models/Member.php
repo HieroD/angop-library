@@ -15,6 +15,18 @@ class Member extends Authenticatable
     /** @use HasFactory<MemberFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'member_code',
+        'staff_id',
+        'name',
+        'email',
+        'password',
+        'phone',
+        'gender',
+        'date_of_birth',
+        'address',
+    ];
+
     protected function casts(): array
     {
         return [

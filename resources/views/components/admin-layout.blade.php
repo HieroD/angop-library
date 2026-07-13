@@ -43,8 +43,12 @@
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $active === 'books' ? 1 : 0 }}">menu_book</span>
                     Kelola Buku
                 </a>
-                <a href="#" class="flex items-center gap-3 rounded-lg px-4 py-3 font-medium text-[#e1e3e4] transition hover:bg-white/10">
-                    <span class="material-symbols-outlined">group</span>
+                <a href="{{ route('admin.members.index') }}" @class([
+                    'flex items-center gap-3 rounded-lg px-4 py-3 font-medium transition',
+                    'bg-[#00685f] text-white' => $active === 'members',
+                    'text-[#e1e3e4] hover:bg-white/10' => $active !== 'members',
+                ])>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $active === 'members' ? 1 : 0 }}">group</span>
                     Kelola Anggota
                 </a>
                 <a href="#" class="flex items-center gap-3 rounded-lg px-4 py-3 font-medium text-[#e1e3e4] transition hover:bg-white/10">
