@@ -15,7 +15,7 @@
 </head>
 <body class="min-h-screen bg-[#f8f9fa] font-sans text-[#191c1d]">
     <div class="min-h-screen lg:flex" x-data="{ sidebarOpen: false }">
-        <aside class="fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-[#bcc9c6] bg-[#2e3132] px-3 py-6 shadow-sm transition-transform duration-300 lg:static lg:translate-x-0" x-bind:class="sidebarOpen ? 'max-lg:translate-x-0' : 'max-lg:-translate-x-full'">
+        <aside class="fixed inset-y-0 left-0 z-40 flex w-[260px] flex-col border-r border-[#bcc9c6] bg-[#2e3132] px-3 py-6 shadow-sm transition-transform duration-300 lg:translate-x-0" x-bind:class="sidebarOpen ? 'max-lg:translate-x-0' : 'max-lg:-translate-x-full'">
             <div class="flex items-center justify-between px-3 mb-8">
                 <div>
                     <h1 class="text-2xl font-bold text-[#f4fffc]">Angop Library</h1>
@@ -85,7 +85,7 @@
             </button>
         </header>
 
-        <main class="min-h-screen flex-1 bg-[#f3f4f5] p-4 sm:p-6 lg:p-8">
+        <main class="min-h-screen flex-1 bg-[#f3f4f5] p-4 sm:p-6 lg:ml-[260px] lg:p-8">
             @if (session('success'))
                 <div class="mb-6 flex items-center gap-3 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
                     <span class="material-symbols-outlined text-emerald-600" style="font-size: 20px;">check_circle</span>
