@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,4 +21,7 @@ Route::middleware('auth:staff')->group(function () {
     Route::resource('/admin/books', BookController::class)
         ->only(['index', 'store', 'update', 'destroy'])
         ->names('admin.books');
+    Route::resource('/admin/members', MemberController::class)
+        ->only(['index', 'store', 'update', 'destroy'])
+        ->names('admin.members');
 });
