@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Auth\Login;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -21,5 +22,16 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'Email atau kata sandi salah.',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        auth('staff')->logout();
+        auth('member')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
 }

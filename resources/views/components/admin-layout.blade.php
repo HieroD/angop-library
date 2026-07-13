@@ -69,6 +69,14 @@
                 </a>
             </nav>
 
+            <form class="mt-4" method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left font-medium text-rose-100 transition hover:bg-rose-500/15" type="submit">
+                        <span class="material-symbols-outlined">logout</span>
+                        Logout
+                    </button>
+            </form>
+
             <div class="border-t border-white/10 px-3 pt-5">
                 <p class="text-sm font-semibold text-[#f4fffc]">{{ $staff?->name ?? 'Admin' }}</p>
                 <p class="text-sm text-[#e1e3e4]">Administrator</p>
