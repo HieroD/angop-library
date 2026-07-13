@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,7 @@ Route::middleware('auth:staff')->group(function () {
     Route::resource('/admin/members', MemberController::class)
         ->only(['index', 'store', 'update', 'destroy'])
         ->names('admin.members');
+    Route::get('/admin/borrowings', [BorrowController::class, 'index'])->name('admin.borrowings.index');
+    Route::patch('/admin/borrowings/{borrowing}/approve', [BorrowController::class, 'approve'])->name('admin.borrowings.approve');
+    Route::patch('/admin/borrowings/{borrowing}/reject', [BorrowController::class, 'reject'])->name('admin.borrowings.reject');
 });
