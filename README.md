@@ -48,6 +48,9 @@ npm install
 npm run build
 
 php artisan storage:link
+
+# Run locally
+composer run dev
 ```
 
 ## Default Credentials
