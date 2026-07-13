@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
             'password' => 'adminadmin',
         ]);
 
-        $this->call(BookSeeder::class);
+        $this->call([
+            BookSeeder::class,
+            LibraryWorkflowSeeder::class,
+        ]);
     }
 }

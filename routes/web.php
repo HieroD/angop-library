@@ -31,4 +31,5 @@ Route::middleware('auth:staff')->group(function () {
     Route::patch('/admin/borrowings/{borrowing}/reject', [BorrowController::class, 'reject'])->name('admin.borrowings.reject');
     Route::get('/admin/returns', [ReturnController::class, 'index'])->name('admin.returns.index');
     Route::post('/admin/returns/{borrowing}', [ReturnController::class, 'store'])->name('admin.returns.store');
+    Route::patch('/admin/returns/{returnRecord}/payment', [ReturnController::class, 'updatePayment'])->name('admin.returns.payment.update');
 });

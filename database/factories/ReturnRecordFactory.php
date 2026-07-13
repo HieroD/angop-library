@@ -15,6 +15,7 @@ class ReturnRecordFactory extends Factory
         return [
             'return_date' => now(),
             'fine_amount' => 0.00,
+            'paid_amount' => 0.00,
             'payment_status' => 'unpaid',
         ];
     }
