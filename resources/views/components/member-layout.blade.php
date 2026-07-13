@@ -29,7 +29,7 @@
                     ])>
                         <span class="text-sm uppercase tracking-wider">Beranda</span>
                     </a>
-                    <a href="#" @class([
+                    <a href="{{ route('member.catalog.index') }}" @class([
                         'flex h-full items-end border-b-2 pb-4 font-semibold transition-colors',
                         'border-[#00685f] text-[#00685f]' => $active === 'catalog',
                         'border-transparent text-[#3d4947] hover:border-[#00685f] hover:text-[#00685f]' => $active !== 'catalog',
@@ -95,7 +95,7 @@
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $active === 'dashboard' ? 1 : 0 }}">home</span>
                     Beranda
                 </a>
-                <a href="#" @class([
+                <a href="{{ route('member.catalog.index') }}" @class([
                     'flex items-center gap-3 rounded-lg px-4 py-3 font-medium transition',
                     'bg-[#00685f] text-white' => $active === 'catalog',
                     'text-[#3d4947] hover:bg-[#e1e3e4]' => $active !== 'catalog',

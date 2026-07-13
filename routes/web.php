@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ReturnController;
@@ -37,4 +38,6 @@ Route::middleware('auth:staff')->group(function () {
 
 Route::middleware('auth:member')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'member'])->name('member.dashboard');
+    Route::get('/buku', [CatalogController::class, 'index'])->name('member.catalog.index');
+    Route::get('/buku/{book}', [CatalogController::class, 'show'])->name('member.catalog.show');
 });
