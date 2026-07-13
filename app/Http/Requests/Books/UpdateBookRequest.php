@@ -40,4 +40,45 @@ class UpdateBookRequest extends FormRequest
             'description' => ['nullable', 'string'],
         ];
     }
+
+    /**
+     * Get custom validation messages.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Judul buku wajib diisi.',
+            'title.string' => 'Judul buku harus berupa teks.',
+            'title.max' => 'Judul buku maksimal 255 karakter.',
+            'book_cover.image' => 'Sampul buku harus berupa gambar.',
+            'book_cover.max' => 'Sampul buku maksimal 2 MB.',
+            'isbn.string' => 'ISBN harus berupa teks.',
+            'isbn.max' => 'ISBN maksimal 13 karakter.',
+            'isbn.unique' => 'ISBN sudah digunakan oleh buku lain.',
+            'author_id.integer' => 'Penulis yang dipilih tidak valid.',
+            'author_id.exists' => 'Penulis yang dipilih tidak ditemukan.',
+            'author_id.required_without' => 'Pilih penulis dari daftar atau masukkan nama penulis baru.',
+            'author_name.string' => 'Nama penulis harus berupa teks.',
+            'author_name.max' => 'Nama penulis maksimal 255 karakter.',
+            'author_name.required_without' => 'Pilih penulis dari daftar atau masukkan nama penulis baru.',
+            'category_id.integer' => 'Kategori yang dipilih tidak valid.',
+            'category_id.exists' => 'Kategori yang dipilih tidak ditemukan.',
+            'category_id.required_without' => 'Pilih kategori dari daftar atau masukkan nama kategori baru.',
+            'category_name.string' => 'Nama kategori harus berupa teks.',
+            'category_name.max' => 'Nama kategori maksimal 255 karakter.',
+            'category_name.required_without' => 'Pilih kategori dari daftar atau masukkan nama kategori baru.',
+            'publisher.string' => 'Penerbit harus berupa teks.',
+            'publisher.max' => 'Penerbit maksimal 255 karakter.',
+            'published_year.required' => 'Tahun terbit wajib diisi.',
+            'published_year.integer' => 'Tahun terbit harus berupa angka.',
+            'published_year.min' => 'Tahun terbit minimal tahun 1000.',
+            'published_year.max' => 'Tahun terbit tidak boleh melebihi tahun ini.',
+            'total_copies.required' => 'Stok wajib diisi.',
+            'total_copies.integer' => 'Stok harus berupa angka.',
+            'total_copies.min' => 'Stok tidak boleh kurang dari 0.',
+            'description.string' => 'Deskripsi harus berupa teks.',
+        ];
+    }
 }
