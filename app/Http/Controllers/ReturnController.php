@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Returns\StoreReturn;
+use App\Actions\Returns\UpdateReturnPayment;
 use App\Http\Requests\Returns\StoreReturnRequest;
+use App\Http\Requests\Returns\UpdateReturnPaymentRequest;
 use App\Models\Borrowing;
 use App\Models\ReturnRecord;
 use Illuminate\Contracts\View\View;
@@ -32,5 +34,12 @@ class ReturnController extends Controller
         $storeReturn->handle($borrowing, auth('staff')->user());
 
         return back()->with('success', 'Buku berhasil dikembalikan.');
+    }
+
+    public function updatePayment(UpdateReturnPaymentRequest $request, ReturnRecord $returnRecord, UpdateReturnPayment $updateReturnPayment): RedirectResponse
+    {
+        $updateReturnPayment->handle($returnRecord, $request->validated());
+
+        return back()->with('success', 'Pembayaran denda berhasil diperbarui.');
     }
 }

@@ -19,6 +19,7 @@ class ReturnRecord extends Model
         'staff_id',
         'return_date',
         'fine_amount',
+        'paid_amount',
         'payment_status',
         'fine_reason',
     ];
@@ -28,6 +29,7 @@ class ReturnRecord extends Model
         return [
             'return_date' => 'datetime',
             'fine_amount' => 'decimal:2',
+            'paid_amount' => 'decimal:2',
         ];
     }
 
