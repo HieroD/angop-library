@@ -61,18 +61,26 @@
                         <tbody>
                             @forelse ($peminjamanAktif as $borrowing)
                                 @php
-                                    $daysRemaining = now()->startOfDay()->diffInDays($borrowing->due_date, false);
+                                    $daysRemaining = $borrowing->due_date ? now()->startOfDay()->diffInDays($borrowing->due_date, false) : null;
                                 @endphp
                                 <tr class="border-b border-[#e1e3e4] transition-colors hover:bg-[#f3f4f5]">
                                     <td class="px-5 py-4">
                                         <p class="font-medium text-[#191c1d]">{{ $borrowing->book->title }}</p>
                                         <p class="text-sm text-[#3d4947]">{{ $borrowing->book->authors->pluck('name')->join(', ') }}</p>
                                     </td>
-                                    <td class="px-5 py-4 text-sm @if ($daysRemaining < 0) font-medium text-[#ba1a1a] @elseif ($daysRemaining <= 2) font-medium text-[#f97316] @else text-[#3d4947] @endif">
-                                        {{ $borrowing->due_date->translatedFormat('d M Y') }}
+                                    <td class="px-5 py-4 text-sm @if ($daysRemaining !== null && $daysRemaining < 0) font-medium text-[#ba1a1a] @elseif ($daysRemaining !== null && $daysRemaining <= 2) font-medium text-[#f97316] @else text-[#3d4947] @endif">
+                                        @if ($borrowing->due_date)
+                                            {{ $borrowing->due_date->translatedFormat('d M Y') }}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
                                     <td class="px-5 py-4">
-                                        @if ($daysRemaining < 0)
+                                        @if ($borrowing->status === 'menunggu konfirmasi')
+                                            <span class="inline-flex items-center rounded bg-[#e1e3e4] px-2 py-1 text-xs font-semibold tracking-wider text-[#3d4947] uppercase">
+                                                Menunggu Konfirmasi
+                                            </span>
+                                        @elseif ($daysRemaining < 0)
                                             <span class="inline-flex items-center rounded bg-[#ffdad6] px-2 py-1 text-xs font-semibold tracking-wider text-[#93000a] uppercase">
                                                 Terlambat {{ abs($daysRemaining) }} Hari
                                             </span>

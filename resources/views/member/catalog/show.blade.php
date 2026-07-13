@@ -60,12 +60,35 @@
                 </div>
             </div>
 
-            <div>
+            <div x-data="{ open: false }">
                 @if ($book->total_copies > 0)
-                    <button class="flex w-full items-center justify-center gap-2 rounded-lg bg-[#00685f] px-8 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#005049] active:scale-95 md:w-auto">
+                    <button @click="open = true" class="flex w-full items-center justify-center gap-2 rounded-lg bg-[#00685f] px-8 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#005049] active:scale-95 md:w-auto">
                         <span class="material-symbols-outlined" style="font-size: 20px;">book</span>
                         Pinjam Buku Ini
                     </button>
+
+                    <div x-show="open" x-cloak class="fixed inset-0 z-50">
+                        <div class="fixed inset-0 bg-black/50" @click="open = false"></div>
+                        <div class="fixed inset-0 flex items-center justify-center p-4">
+                            <div class="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+                                <h3 class="text-lg font-bold text-[#191c1d]">Konfirmasi Peminjaman</h3>
+                                <p class="mt-2 text-sm leading-relaxed text-[#3d4947]">
+                                    Apakah Anda yakin ingin meminjam buku <strong>{{ $book->title }}</strong>?
+                                </p>
+                                <form method="POST" action="{{ route('member.catalog.borrow', $book) }}">
+                                    @csrf
+                                    <div class="mt-6 flex justify-end gap-3">
+                                        <button type="button" @click="open = false" class="rounded-lg border border-[#e1e3e4] px-4 py-2 text-sm font-semibold text-[#3d4947] transition hover:bg-[#f3f4f5]">
+                                            Batal
+                                        </button>
+                                        <button type="submit" class="rounded-lg bg-[#00685f] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#005049]">
+                                            Ya, Pinjam
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <button class="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-lg bg-[#e1e3e4] px-8 py-3 text-sm font-semibold text-[#6d7a77] shadow-sm md:w-auto" disabled>
                         <span class="material-symbols-outlined" style="font-size: 20px;">block</span>

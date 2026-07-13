@@ -60,6 +60,7 @@ class DashboardController extends Controller
 
         $totalBukuDipinjam = Borrowing::query()
             ->where('member_id', $member->id)
+            ->where('status', 'dikembalikan')
             ->count();
 
         $totalDenda = ReturnRecord::query()
@@ -71,7 +72,7 @@ class DashboardController extends Controller
         $peminjamanAktif = Borrowing::query()
             ->with('book.authors')
             ->where('member_id', $member->id)
-            ->whereIn('status', ['dipinjam', 'terlambat'])
+            ->whereIn('status', ['menunggu konfirmasi', 'dipinjam', 'terlambat'])
             ->latest('borrow_date')
             ->get();
 

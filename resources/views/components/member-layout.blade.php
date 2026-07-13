@@ -47,24 +47,13 @@
 
                 <div class="flex flex-1 items-center justify-end gap-3 text-[#3d4947]">
 
-                    <div x-data="{ dropdownOpen: false }" class="relative hidden md:block">
-                        <button x-on:click="dropdownOpen = !dropdownOpen" class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-[#e1e3e4] bg-[#008378] text-sm font-semibold text-white transition-transform hover:-translate-y-0.5">
-                            {{ strtoupper(substr($member->name, 0, 1)) }}
+                    <form class="hidden md:block" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="flex cursor-pointer items-center gap-2 rounded-lg bg-[#ba1a1a] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#93000a]" type="submit">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
+                            Keluar
                         </button>
-                        <div x-show="dropdownOpen" x-on:click.outside="dropdownOpen = false" x-transition class="absolute right-0 mt-2 w-48 overflow-hidden rounded-lg border border-[#e1e3e4] bg-white shadow-lg">
-                            <div class="border-b border-[#e1e3e4] px-4 py-3">
-                                <p class="text-sm font-semibold text-[#191c1d]">{{ $member->name }}</p>
-                                <p class="text-xs text-[#3d4947]">{{ $member->member_code }}</p>
-                            </div>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button class="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm text-[#ba1a1a] transition-colors hover:bg-[#ffdad6]" type="submit">
-                                    <span class="material-symbols-outlined" style="font-size: 18px;">logout</span>
-                                    Keluar
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                    </form>
 
                     <button class="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:bg-[#e1e3e4] md:hidden" x-on:click="mobileNavOpen = !mobileNavOpen">
                         <span class="material-symbols-outlined" x-text="mobileNavOpen ? 'close' : 'menu'">menu</span>
