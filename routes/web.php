@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\BorrowController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ReturnController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,4 +29,6 @@ Route::middleware('auth:staff')->group(function () {
     Route::get('/admin/borrowings', [BorrowController::class, 'index'])->name('admin.borrowings.index');
     Route::patch('/admin/borrowings/{borrowing}/approve', [BorrowController::class, 'approve'])->name('admin.borrowings.approve');
     Route::patch('/admin/borrowings/{borrowing}/reject', [BorrowController::class, 'reject'])->name('admin.borrowings.reject');
+    Route::get('/admin/returns', [ReturnController::class, 'index'])->name('admin.returns.index');
+    Route::post('/admin/returns/{borrowing}', [ReturnController::class, 'store'])->name('admin.returns.store');
 });

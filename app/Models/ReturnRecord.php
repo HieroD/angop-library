@@ -14,6 +14,15 @@ class ReturnRecord extends Model
 
     protected $table = 'returns';
 
+    protected $fillable = [
+        'borrowing_id',
+        'staff_id',
+        'return_date',
+        'fine_amount',
+        'payment_status',
+        'fine_reason',
+    ];
+
     protected function casts(): array
     {
         return [
