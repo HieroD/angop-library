@@ -59,6 +59,14 @@
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $active === 'borrowings' ? 1 : 0 }}">handshake</span>
                     Kelola Peminjaman
                 </a>
+                <a href="{{ route('admin.returns.index') }}" @class([
+                    'flex items-center gap-3 rounded-lg px-4 py-3 font-medium transition',
+                    'bg-[#00685f] text-white' => $active === 'returns',
+                    'text-[#e1e3e4] hover:bg-white/10' => $active !== 'returns',
+                ])>
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ $active === 'returns' ? 1 : 0 }}">assignment_return</span>
+                    Kelola Pengembalian
+                </a>
             </nav>
 
             <div class="border-t border-white/10 px-3 pt-5">
