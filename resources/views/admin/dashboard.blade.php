@@ -49,7 +49,7 @@
     <section class="overflow-hidden rounded-lg border border-[#e1e3e4] bg-white shadow-sm">
         <div class="flex items-center justify-between gap-4 border-b border-[#e1e3e4] p-6">
             <h3 class="text-xl font-semibold text-[#191c1d]">Peminjaman Terbaru</h3>
-            <a href="#" class="text-sm font-semibold text-[#00685f] hover:underline">Lihat Semua</a>
+            <a href=" {{ route('admin.borrowings.index') }}" class="text-sm font-semibold text-[#00685f] hover:underline">Lihat Semua</a>
         </div>
 
         <div class="overflow-x-auto">
