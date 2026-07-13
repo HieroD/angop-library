@@ -11,6 +11,8 @@ class RejectBorrowing
     public function handle(Borrowing $borrowing, Staff $staff): Borrowing
     {
         return DB::transaction(function () use ($borrowing, $staff): Borrowing {
+            $borrowing->book()->increment('total_copies');
+
             $borrowing->update([
                 'staff_id' => $staff->id,
                 'status' => 'ditolak',

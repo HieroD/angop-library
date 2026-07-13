@@ -20,10 +20,11 @@ return new class extends Migration
                 ->constrained('members')
                 ->cascadeOnDelete();
             $table->foreignId('staff_id')
+                ->nullable()
                 ->constrained('staffs')
                 ->cascadeOnDelete();
             $table->timestamp('borrow_date')->useCurrent();
-            $table->date('due_date');
+            $table->date('due_date')->nullable();
             $table->timestamp('returned_at')->nullable();
             $table->enum('status', ['menunggu konfirmasi', 'dipinjam', 'ditolak', 'dikembalikan', 'terlambat'])->default('menunggu konfirmasi');
             $table->timestamps();

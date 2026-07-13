@@ -12,6 +12,8 @@ class StoreReturn
     public function handle(Borrowing $borrowing, Staff $staff): ReturnRecord
     {
         return DB::transaction(function () use ($borrowing, $staff): ReturnRecord {
+            $borrowing->book()->increment('total_copies');
+
             $overdueDays = max(0, now()->startOfDay()->diffInDays($borrowing->due_date, false) * -1);
             $fineAmount = $overdueDays * 1000;
 
