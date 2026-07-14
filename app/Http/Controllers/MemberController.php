@@ -19,7 +19,7 @@ class MemberController extends Controller
         $members = Member::query()
             ->withCount('borrowings')
             ->latest()
-            ->paginate(10);
+            ->paginate(7);
 
         return view('admin.members.index', compact('members'));
     }

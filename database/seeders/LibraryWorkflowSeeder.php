@@ -21,7 +21,7 @@ class LibraryWorkflowSeeder extends Seeder
             'email' => 'admin@gmail.com',
         ], [
             'name' => 'Admin',
-            'password' => 'adminadmin',
+            'password' => 'admin1234',
         ]);
 
         $members = $this->members($staff);

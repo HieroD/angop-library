@@ -21,7 +21,7 @@ class BookController extends Controller
         $books = Book::query()
             ->with(['authors', 'category'])
             ->latest()
-            ->paginate(10);
+            ->paginate(7);
 
         $authors = Author::query()->orderBy('name')->get(['id', 'name']);
 

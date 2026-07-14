@@ -68,12 +68,21 @@
                     </button>
                 </label>
                 <p x-show="passwordError" x-cloak x-text="passwordError" class="mt-1 text-xs text-red-600"></p>
+                <p class="mt-1 text-xs text-gray-500">Belum punya akun? Kunjungi loket atau <a href="https://wa.me/{{ config('app.whatsapp_number') }}" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:text-teal-700 underline">hubungi petugas</a></p>
             </div>
 
             <button class="btn w-full bg-teal-600 hover:bg-teal-700 text-white border-0 rounded-lg font-medium mt-4 shadow-sm" type="submit" :disabled="loading">
                 <span x-show="loading" class="loading loading-spinner loading-sm"></span>
                 Masuk
             </button>
+
+            <div class="mt-6 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800">
+                <p>Untuk demo cepat, gunakan akun berikut:</p>
+                <ul class="list-disc list-inside mt-1 space-y-0.5">
+                    <li>Admin: <strong>admin@gmail.com</strong> / <strong>admin1234</strong></li>
+                    <li>Anggota: <strong>imam@gmail.com</strong> / <strong>imam1234</strong></li>
+                </ul>
+            </div>
         </form>
     </main>
 </body>
