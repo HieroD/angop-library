@@ -46,19 +46,24 @@ class LibraryWorkflowSeeder extends Seeder
             ['member_code' => 'MBR-101', 'name' => 'Ahmad Fauzi', 'email' => 'ahmad.fauzi@example.com', 'phone' => '081234567101'],
             ['member_code' => 'MBR-102', 'name' => 'Siti Rahma', 'email' => 'siti.rahma@example.com', 'phone' => '081234567102'],
             ['member_code' => 'MBR-103', 'name' => 'Budi Santoso', 'email' => 'budi.santoso@example.com', 'phone' => '081234567103'],
-            ['member_code' => 'MBR-104', 'name' => 'Ani Wijaya', 'email' => 'ani.wijaya@example.com', 'phone' => '081234567104'],
-            ['member_code' => 'MBR-105', 'name' => 'Dewi Lestari', 'email' => 'dewi.lestari@example.com', 'phone' => '081234567105'],
-            ['member_code' => 'MBR-106', 'name' => 'Rizky Pratama', 'email' => 'rizky.pratama@example.com', 'phone' => '081234567106'],
-            ['member_code' => 'MBR-107', 'name' => 'Maya Putri', 'email' => 'maya.putri@example.com', 'phone' => '081234567107'],
-            ['member_code' => 'MBR-108', 'name' => 'Fajar Nugroho', 'email' => 'fajar.nugroho@example.com', 'phone' => '081234567108'],
+            ['member_code' => 'MBR-104', 'name' => 'Imam', 'email' => 'imam@gmail.com', 'phone' => '087777777777'],
         ])->map(fn (array $member): Member => Member::query()->updateOrCreate([
             'email' => $member['email'],
         ], $member + [
             'staff_id' => $staff->id,
-            'password' => 'password',
-            'gender' => fake()->randomElement(['M', 'F']),
-            'date_of_birth' => fake()->date('Y-m-d', '-18 years'),
-            'address' => fake()->address(),
+            'password' => match ($member['email']) {
+                'imam@gmail.com' => 'imam1234',
+                default => 'password',
+            },
+            'gender' => match ($member['email']) {
+                'imam@gmail.com' => 'M',
+                default => fake('id_ID')->randomElement(['M', 'F']),
+            },
+            'date_of_birth' => fake('id_ID')->date('Y-m-d', '-18 years'),
+            'address' => match ($member['email']) {
+                'imam@gmail.com' => 'Jalan KungKingKang Nomor 67',
+                default => fake('id_ID')->address(),
+            },
         ]));
     }
 
@@ -68,7 +73,7 @@ class LibraryWorkflowSeeder extends Seeder
      */
     private function pendingBorrowings(Collection $members, Collection $books, Staff $staff): void
     {
-        foreach (range(0, 6) as $index) {
+        foreach (range(0, 2) as $index) {
             Borrowing::query()->updateOrCreate([
                 'member_id' => $members[$index % $members->count()]->id,
                 'book_id' => $books[$index % $books->count()]->id,
@@ -88,7 +93,7 @@ class LibraryWorkflowSeeder extends Seeder
      */
     private function activeBorrowings(Collection $members, Collection $books, Staff $staff): void
     {
-        foreach (range(0, 4) as $index) {
+        foreach (range(0, 2) as $index) {
             Borrowing::query()->updateOrCreate([
                 'member_id' => $members[$index % $members->count()]->id,
                 'book_id' => $books[($index + 3) % $books->count()]->id,
@@ -101,7 +106,7 @@ class LibraryWorkflowSeeder extends Seeder
             ]);
         }
 
-        foreach (range(0, 3) as $index) {
+        foreach (range(0, 2) as $index) {
             Borrowing::query()->updateOrCreate([
                 'member_id' => $members[($index + 4) % $members->count()]->id,
                 'book_id' => $books[($index + 7) % $books->count()]->id,
@@ -121,7 +126,7 @@ class LibraryWorkflowSeeder extends Seeder
      */
     private function returnHistory(Collection $members, Collection $books, Staff $staff): void
     {
-        foreach (range(0, 5) as $index) {
+        foreach (range(0, 2) as $index) {
             $borrowing = Borrowing::query()->updateOrCreate([
                 'member_id' => $members[$index % $members->count()]->id,
                 'book_id' => $books[($index + 10) % $books->count()]->id,

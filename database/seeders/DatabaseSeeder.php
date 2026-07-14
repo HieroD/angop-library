@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
         ], [
             'name' => 'Admin',
-            'password' => 'adminadmin',
+            'password' => 'admin1234',
         ]);
 
         $this->call([
